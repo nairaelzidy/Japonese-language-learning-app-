@@ -19,7 +19,7 @@ class HomeScreen extends StatelessWidget {
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
           title: Text(
-            "Toku",
+            "Toku naira",
             style: TextStyle(color: Colors.white),
           )),
       body: Padding(
