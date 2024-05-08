@@ -1,42 +1,39 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:new_start_review2/screen/HomeScreen.dart';
-import 'package:new_start_review2/screen/section%207,8/basketballApp.dart';
-import 'package:new_start_review2/screen/section%207,8/card_App.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:new_start_review2/All_section/section%2012/cubits/getWwatherCubit/get_weather_cubit.dart';
+import 'package:new_start_review2/All_section/section%2013/screens/chat_page.dart';
+import 'package:new_start_review2/All_section/section%2013/screens/login_page.dart';
+import 'package:provider/provider.dart';
 
-void main() {
-  runApp(const MyApp());
+import 'All_section/section 12/cubits/getWwatherCubit/get_Weather_States.dart';
+import 'All_section/section 12/providers/weather_providers.dart';
+import 'All_section/section 12/screen/home_pages.dart';
+import 'All_section/section 13/screens/register_page.dart';
+import 'firebase_options.dart';
+
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  runApp(WeatherApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  // This widget is the root of your application.
+class WeatherApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // TRY THIS: Try running your application with "flutter run". You'll see
-        // the application has a purple toolbar. Then, without quitting the app,
-        // try changing the seedColor in the colorScheme below to Colors.green
-        // and then invoke "hot reload" (save your changes or press the "hot
-        // reload" button in a Flutter-supported IDE, or press "r" if you used
-        // the command line to start the app).
-        //
-        // Notice that the counter didn't reset back to zero; the application
-        // state is not lost during the reload. To reset the state, use hot
-        // restart instead.
-        //
-        // This works for code too, not just values: Most code changes can be
-        // tested with just a hot reload.
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: HomeScreen(),
+      routes: {
+        LoginPage.id:(context)=> LoginPage(),
+        RegisterPage.id: (context)=> RegisterPage(),
+        ChatPage.id : (context )=> ChatPage()
+
+      },
+      initialRoute: LoginPage.id,
+
+
     );
   }
 }
-

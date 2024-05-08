@@ -1,20 +1,35 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:new_start_review2/component/category_items.dart';
-import 'package:new_start_review2/screen/NumbersPage.dart';
+import 'package:new_start_review2/All_section/section%2010/screen/tune_screen.dart';
 
+import '../../section 10/models/TuneModel.dart';
+import '../component/category_items.dart';
 import 'ColorsPage.dart';
 import 'FamilyMembersPage.dart';
+import 'NumbersPage.dart';
 import 'PhrasesPage.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
+
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xffFEF6DB),
       appBar: AppBar(
+        actions: [
+          IconButton(
+              onPressed: (){
+                Navigator.push(context, MaterialPageRoute(builder: (context){
+                  return TuneScreen();
+                }));
+              },
+              icon: Padding(
+                padding: const EdgeInsets.only(right: 16),
+                child: Icon(Icons.music_note,color: Colors.white,size: 20,),
+              ))
+        ],
           backgroundColor: Color(0xff46322B),
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
