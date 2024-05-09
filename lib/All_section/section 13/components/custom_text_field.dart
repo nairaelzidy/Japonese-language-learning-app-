@@ -1,26 +1,31 @@
 import 'package:flutter/material.dart';
 
-class CustomFormTextField extends StatelessWidget {
-  CustomFormTextField(
-      {this.hintText, this.onChanged, this.obscureText = false});
-
+class CustomFormTextField extends StatefulWidget {
+  CustomFormTextField({this.hintText, this.onChanged });
   Function(String)? onChanged;
   String? hintText;
 
-  bool? obscureText;
 
+
+  @override
+  State<CustomFormTextField> createState() => _CustomFormTextFieldState();
+}
+
+class _CustomFormTextFieldState extends State<CustomFormTextField> {
+  bool obscureText=true;
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      obscureText: obscureText!,
+      obscureText:obscureText,
       validator: (data) {
         if (data!.isEmpty) {
           return 'field is required';
         }
       },
-      onChanged: onChanged,
+      onChanged: widget.onChanged,
       decoration: InputDecoration(
-        hintText: hintText,
+        suffixIcon:togglepassword() ,
+        hintText: widget.hintText,
         hintStyle: TextStyle(
           color: Colors.white,
         ),
@@ -36,5 +41,16 @@ class CustomFormTextField extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  Widget togglepassword (){
+    return IconButton( color: Colors.white,
+        onPressed: ()
+        {
+          setState((){
+            obscureText =! obscureText;
+          });
+        },
+        icon: obscureText ? Icon(Icons.visibility ): Icon(Icons.visibility_off));
   }
 }
