@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 import '../components/chat_buble.dart';
 import '../components/constants.dart';
 import '../models/message_model.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-
 
 class ChatPage extends StatelessWidget {
   static String id = 'ChatPage';
@@ -19,11 +19,11 @@ class ChatPage extends StatelessWidget {
     var email = ModalRoute
         .of(context)!
         .settings
-        .arguments as String?;
+        .arguments ;
     return StreamBuilder<QuerySnapshot>(
       stream: messages.orderBy(kCreatedAt, descending: true).snapshots(),
       builder: (context, snapshot) {
-        if (snapshot.hasData != null) {
+        if (snapshot.hasData ) {
           List<Message> messagesList = [];
           for (int i = 0; i < snapshot.data!.docs.length; i++) {
             messagesList.add(Message.fromJson(snapshot.data!.docs[i]));

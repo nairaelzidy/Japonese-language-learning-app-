@@ -85,4 +85,5 @@ class DefaultFirebaseOptions {
     storageBucket: 'chat-app-review-95585.appspot.com',
     measurementId: 'G-WM55VRNWHT',
   );
+
 }
