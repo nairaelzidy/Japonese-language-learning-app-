@@ -4,7 +4,7 @@ import '../models/product_model.dart';
 import '../screen/UpdateProductPage.dart';
 
 class CustomCard extends StatelessWidget {
-  //finish app
+  //finish appsnnn
   CustomCard({
     required this.product,
     Key? key,
